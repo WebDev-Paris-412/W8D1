@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import myApi from "../api/apiHandler"
 import { useNavigate } from "react-router-dom"
 
@@ -11,11 +11,7 @@ const CreatePetPage = () => {
 	const handleSubmit = async (event) => {
 		event.preventDefault()
 		try {
-			const response = await myApi.post("/api/pets", formState, {
-				headers: {
-					Authorization: `Bearer ${localStorage.getItem("token")}`,
-				},
-			})
+			const response = await myApi.post("/api/pets", formState)
 			console.log(response)
 			navigate(`/pets/${response.data.id}`)
 		} catch (error) {

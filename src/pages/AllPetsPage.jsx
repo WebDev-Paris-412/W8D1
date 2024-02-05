@@ -8,18 +8,8 @@ const AllPetsPage = () => {
 
 	const fetchPetsAndFavorites = async () => {
 		try {
-			const petResponse = await myApi.get("/api/pets", {
-				headers: {
-					Authorization: `Bearer ${localStorage.getItem("token")}`,
-				},
-			})
-			const favoritesResponse = await myApi.get("/api/favorites", {
-				headers: {
-					Authorization: `Bearer ${localStorage.getItem("token")}`,
-				},
-			})
-			console.log(favoritesResponse)
-			console.log(petResponse)
+			const petResponse = await myApi.get("/api/pets")
+			const favoritesResponse = await myApi.get("/api/favorites")
 			setFavorites(favoritesResponse.data.map((oneFav) => oneFav.pet))
 			setPets(petResponse.data)
 		} catch (error) {
@@ -32,13 +22,7 @@ const AllPetsPage = () => {
 
 	const addToFavorite = async (id) => {
 		try {
-			const response = await myApi.post(
-				`/api/favorites/${id}`,
-				{},
-				{
-					headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-				}
-			)
+			const response = await myApi.post(`/api/favorites/${id}`)
 			console.log(response)
 		} catch (error) {
 			console.log(error)
@@ -47,9 +31,7 @@ const AllPetsPage = () => {
 
 	const removeFromFavorites = async (id) => {
 		try {
-			const response = await myApi.delete(`/api/favorites/${id}`, {
-				headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-			})
+			const response = await myApi.delete(`/api/favorites/${id}`)
 			console.log(response)
 		} catch (error) {
 			console.log(error)

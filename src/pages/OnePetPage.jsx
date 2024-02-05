@@ -11,11 +11,7 @@ const OnePetPage = () => {
 
 	const fetchOnePet = async () => {
 		try {
-			const response = await myApi.get(`/api/pets/${petId}`, {
-				headers: {
-					Authorization: `Bearer ${localStorage.getItem("token")}`,
-				},
-			})
+			const response = await myApi.get(`/api/pets/${petId}`)
 			setPet(response.data)
 		} catch (error) {
 			console.log(error)
@@ -28,11 +24,7 @@ const OnePetPage = () => {
 
 	const handleDelete = async () => {
 		try {
-			const response = await myApi.delete(`/api/pets/${petId}`, {
-				headers: {
-					Authorization: `Bearer ${localStorage.getItem("token")}`,
-				},
-			})
+			const response = await myApi.delete(`/api/pets/${petId}`)
 			navigate("/pets")
 			console.log(response)
 		} catch (error) {
