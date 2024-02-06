@@ -10,6 +10,7 @@ import AllPetsPage from "./pages/AllPetsPage"
 import CreatePetPage from "./pages/CreatePetPage"
 import OnePetPage from "./pages/OnePetPage"
 import UpdatePetPage from "./pages/UpdatePetPage"
+import SocialAuthenticate from "./components/Routing/SocialAuthenticate"
 
 // import "./App.css"
 
@@ -31,6 +32,8 @@ function App() {
 					<Route path="/pets/:petId" element={<OnePetPage />} />
 					<Route path="/pets/update/:petId" element={<UpdatePetPage />} />
 				</Route>
+
+				<Route path="/callback" element={<SocialAuthenticate />} />
 			</Routes>
 		</>
 	)

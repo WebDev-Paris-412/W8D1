@@ -1,12 +1,14 @@
 import { useEffect, useState, useContext } from "react"
 import { AuthContext } from "../context/AuthContext"
+import useAuth from "../context/useAuth"
 import { useParams, Link, useNavigate } from "react-router-dom"
 import myApi from "../api/apiHandler"
 
 const OnePetPage = () => {
 	const [pet, setPet] = useState(null)
 	const { petId } = useParams()
-	const { user } = useContext(AuthContext)
+	// const { user } = useContext(AuthContext)
+	const { user } = useAuth()
 	const navigate = useNavigate()
 
 	const fetchOnePet = async () => {
